@@ -112,13 +112,15 @@ $(document).on('turbolinks:load', function() {
             scoreName: "rating"
         })
 
-        $(".review-rating").raty({
-            readOnly: true,
-            score: function() {
-                return $(this).attr("data-score");
-            },
-            path: "/assets/"
-        })
+        if($(".review-rating img").length == 0) {
+            $(".review-rating").raty({
+                readOnly: true,
+                score: function() {
+                    return $(this).attr("data-score");
+                },
+                path: "/assets/"
+            })
+        }
 
         $(".loadMoreBtn").on("click", function() {
             const page = $("#current_page").val();
