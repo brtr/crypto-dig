@@ -67,6 +67,20 @@ class RecommendProjectsController < ApplicationController
     redirect_to recommend_project_path(@project)
   end
 
+  def unchecked_projects
+    @projects = RecommendProject.submitted.order(created_at: :desc).page(params[:page]).per(10)
+  end
+
+  def check
+    if @project.approved!
+      flash[:notice] = t("views.notice.project_check")
+    else
+      flash[:alert] = @project.errors.full_messages.join(', ')
+    end
+
+    redirect_to unchecked_projects_recommend_projects_path
+  end
+
   private
   def get_project
     @project = RecommendProject.find params[:id]

@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   resources :recommend_projects do
     post :add_comment, on: :member
+    put :check, on: :member
+    get :unchecked_projects, on: :collection
   end
 end
