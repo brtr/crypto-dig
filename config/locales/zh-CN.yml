@@ -9,6 +9,7 @@ zh-CN:
         tag_list: 标签
         desc: 项目描述*
         cost: 项目成本*
+        is_recommend: 是否推荐*
     errors:
       messages:
         record_invalid: '验证失败: %{errors}'
@@ -196,7 +197,8 @@ zh-CN:
       add_project: 添加推荐项目
       edit_project: 修改推荐项目
     label:
-      recommender: 推荐人
+      submitter: 提交人
+      is_recommend: "是否推荐:"
       recommend_reason: 推荐理由
       comments: 评论
       connect: 登录钱包

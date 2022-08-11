@@ -12,7 +12,7 @@
               <div class="mt-5 text-nowrap">
                 <h5>
                   <%= t("views.label.rating") %>:
-                  <span class="review-rating" data-score="<%= project.rating.to_i %>"></span>
+                  <span class="review-rating" data-score="<%= project.average_rating.to_i %>"></span>
                 </h5>
                 <%= link_to project.website, target: "_blank" do %>
                   <i class="ai-compass fs-lg opacity-60"></i>

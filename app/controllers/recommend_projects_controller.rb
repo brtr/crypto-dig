@@ -18,6 +18,7 @@ class RecommendProjectsController < ApplicationController
 
   def create
     project = current_user.recommend_projects.new(project_params)
+    project.rating = params[:rating]
     if project.save
       flash[:notice] = t("views.notice.project_create")
     else
@@ -28,7 +29,6 @@ class RecommendProjectsController < ApplicationController
   end
 
   def show
-    @comment = @project.user_comments.new
     @comments = @project.user_comments.includes(:user).with_rich_text_content_and_embeds.order(created_at: :desc).page(params[:page]).per(10)
   end
 
@@ -36,6 +36,7 @@ class RecommendProjectsController < ApplicationController
   end
 
   def update
+    @project.rating = params[:rating]
     if @project.update(project_params)
       flash[:notice] = t("views.notice.project_update")
     else
@@ -87,7 +88,7 @@ class RecommendProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:recommend_project).permit(:name, :website, :desc, :reason, :tag_list, :logo, :cost)
+    params.require(:recommend_project).permit(:name, :website, :desc, :reason, :tag_list, :logo, :cost, :is_recommend)
   end
 
   def comment_params

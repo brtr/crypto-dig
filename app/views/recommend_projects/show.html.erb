@@ -22,10 +22,11 @@
                 <%= image_tag @project.logo_url.to_s %>
                 <h5>
                   <%= t("views.label.rating") %>:
-                  <span class="review-rating" data-score="<%= @project.rating.to_i %>"></span>
+                  <span class="review-rating" data-score="<%= @project.average_rating.to_i %>"></span>
                 </h5>
                 <h6 class="mt-3"><%= t("views.label.cost") %>: <span class="ms-2"><%= @project.cost %></span></h6>
-                <h6 class="mt-3"><%= t("views.label.recommender") %>: <span class="ms-2"><%= address_format @project.user.address %></span></h6>
+                <h6 class="mt-3"><%= t("views.label.submitter") %>: <span class="ms-2"><%= address_format @project.user.address %></span></h6>
+                <h6 class="mt-3"><%= t("views.label.is_recommend") %> <span class="ms-2"><%= @project.is_recommend == 1 ? "Yes" : "No" %></span></h6>
                 <h6 class="mt-3"><%= t("views.label.recommend_reason") %>:</h6>
                 <p><%= @project.reason %></p>
                 <div class="text-nowrap">
@@ -68,7 +69,7 @@
         <% if current_user %>
           <a class="btn btn-translucent-primary d-block w-100" href="#comment-form" data-bs-toggle="collapse"><%= t("views.action.add_comment") %></a>
           <div class="collapse" id="comment-form">
-            <%= form_for @comment, url: add_comment_recommend_project_path(@project), html: {class: "needs-validation rounded-3 shadow p-4 p-lg-5 mt-4"} do |f| %>
+            <%= form_for @project.user_comments.new, url: add_comment_recommend_project_path(@project), html: {class: "needs-validation rounded-3 shadow p-4 p-lg-5 mt-4"} do |f| %>
               <div class="mb-3">
                 <div id="rating-form"><label class="me-3"><%= t("views.label.rating") %>:</label></div>
                 <%= f.rich_text_area :content %>

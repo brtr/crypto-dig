@@ -19,8 +19,8 @@ class RecommendProject < ApplicationRecord
     end
   end
 
-  def rating
-    user_comments.average(:rating)
+  def average_rating
+    (user_comments.sum(&:rating) + rating.to_i) / (user_comments.size + 1)
   end
 
   private

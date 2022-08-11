@@ -9,6 +9,7 @@ en:
         tag_list: Tags
         desc: Project Description*
         cost: Cost*
+        is_recommend: Recommend?*
     errors:
       messages:
         record_invalid: 'Validation failed: %{errors}'
@@ -230,7 +231,8 @@ en:
       add_project: Submit Project
       edit_project: Edit Project
     label:
-      recommender: Recommender
+      submitter: Submitter
+      is_recommend: Recommend?
       recommend_reason: Recommend Reason
       comments: Comments
       connect: Connect
