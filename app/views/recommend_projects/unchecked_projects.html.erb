@@ -1,0 +1,38 @@
+<div class="container py-4 mb-2 mb-sm-0 pb-sm-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <% @projects.each do |project| %>
+        <article class="card card-horizontal card-hover mb-grid-gutter rounded-3">
+          <%#= link_to '', recommend_project_path(project), class: "card-img-top", style: "background-image: url(#{get_logo(project.logo_url)});"%>
+          <div class="card-body">
+            <h2 class="h3 nav-heading mb-4">
+              <%= link_to project.name, recommend_project_path(project) %>
+            </h2>
+            <a class="d-flex meta-link fs-sm align-items-center pt-3" href="#">
+              <div class="ps-2 mt-n1">
+                by<span class="fw-semibold ms-1"><%= project.user.address %></span>
+              </div>
+            </a>
+            <div class="mt-3 text-nowrap">
+              <div class="float-end">
+                <a class="meta-link fs-xs" href="#">
+                  <i class="ai-message-square me-1"></i>&nbsp;<%= project.comments.size %>
+                </a>
+                <span class="meta-divider"></span>
+                <a class="meta-link fs-xs" href="#">
+                  <i class="ai-calendar me-1 mt-n1"></i>&nbsp;<%= date_format project.created_at %>
+                </a>
+              </div>
+            </div>
+            <div class="p-bottom">
+              <%= link_to t("views.action.check"), check_recommend_project_path(project), class: "btn btn-primary", method: :put %>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </div>
+    <div class="paginationBox p-4">
+      <%= paginate @projects %>
+    </div>
+  </div>
+</div>

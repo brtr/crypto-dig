@@ -1,0 +1,35 @@
+<div class="row" style="width: 50%; margin: 0 auto;">
+  <%= form_for @project do |f| %>
+    <div class="mb-3 pb-1 col-12">
+      <%= f.label :logo, class: "form-label px-0" %>
+      <label class="btn btn-light form-control shadow btn-sm mb-2" id="upload_label">
+        <span><%= t("views.action.upload") %></span>
+        <%= f.file_field :logo, class: "hide" %>
+      </label>
+    </div>
+    <div class="mb-3 pb-1 col-12">
+      <%= f.label :name, class: "form-label px-0" %>
+      <%= f.text_field :name, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3 pb-1 col-12">
+      <%= f.label :website, class: "form-label px-0" %>
+      <%= f.text_field :website, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3 pb-1 col-12">
+      <%= f.label :reason, class: "form-label px-0" %>
+      <%= f.text_field :reason, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3 pb-1 col-12">
+      <%= f.label :cost, class: "form-label px-0" %>
+      <%= f.text_field :cost, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3 pb-1 col-12">
+      <%= f.label :desc, class: "form-label px-0" %>
+      <%= f.rich_text_area :desc, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3 pb-1">
+      <%= f.submit t("views.action.submit"), class: 'btn btn-primary mt-3 mt-sm-0' %>
+      <%= link_to t("views.action.cancel"), recommend_projects_path, class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>

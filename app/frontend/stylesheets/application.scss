@@ -1,0 +1,112 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "./theme.min.css";
+
+.hide {display: none;}
+
+#spinner{position: fixed;z-index: 9999;top: 40%;left: 40%;padding: 0 20px;min-width: 100px;border-radius: 8px;}
+
+.text-right {
+  text-align: right;
+}
+
+.p-right {
+  position: absolute;
+  right: 1rem;
+}
+
+.p-bottom {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.likeBtn {
+  cursor: pointer;
+}
+
+.pagination a, .pagination span.current, .pagination span.gap {
+  float: left;
+  padding: 0 14px;
+  line-height: 38px;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+
+.pagination {
+  border-left: 1px solid #ddd;
+  .first{
+      padding : 0;
+      float: none;
+      border: none;
+  }
+  .prev {
+      padding : 0;
+      float: none;
+      border: none;
+  }
+  .page{
+      padding : 0;
+      float: none;
+      border: none;
+  }
+  .next{
+      padding : 0;
+      float: none;
+      border: none;
+  }
+  .last{
+      padding : 0;
+      float: none;
+      border: none;
+  }
+}
+
+.card-header {
+  display:flex;
+}
+
+#recommend_project_desc {
+  min-height: 500px;
+}
+
+.language {
+  min-width: 6rem;
+
+  ul {
+    min-width: 0;
+    width: 5rem !important;
+  }
+
+  small {
+    margin-left: -.5rem;
+  }
+}
+
+.logo {
+  display: inline-block;
+  position: relative;
+}
+
+.chain-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+  background-color: #fff;
+}
