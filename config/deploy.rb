@@ -36,6 +36,7 @@ namespace :deploy do
   before :updated, :zip_assets_locally
   before :updated, :send_assets_zip
   before :updated, :unzip_assets
+  after :publishing, 'web:restart'
   after :finishing, :cleanup
 
   task :compile_assets_locally do
@@ -67,6 +68,33 @@ namespace :deploy do
       execute "rm -rf #{release_path}/public/packs/*"
       execute "cd #{release_path}; tar -zxvf #{release_path}/public/assets.tar.gz 1> /dev/null"
       execute "cd #{release_path}; tar -zxvf #{release_path}/public/packs.tar.gz 1> /dev/null"
+    end
+  end
+end
+
+namespace :web do
+  task :setup_config do
+    on roles(:web) do
+      upload_systemd_config('web')
+    end
+  end
+
+  task :setup_socket do
+    on roles(:web) do
+      upload_systemd_config('web', 'socket')
+      execute :systemctl, "--user", "start", "web-#{fetch(:application)}.socket"
+    end
+  end
+
+  task :stop do
+    on roles(:web) do
+      execute :systemctl, "--user", "stop", "web-#{fetch(:application)}.service"
+    end
+  end
+
+  task :restart do
+    on roles(:web) do
+      execute :systemctl, "--user", "restart", "web-#{fetch(:application)}.service"
     end
   end
 end
