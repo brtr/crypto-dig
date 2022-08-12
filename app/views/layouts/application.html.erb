@@ -111,3 +111,23 @@
     <button class="btn btn-primary btn-sm sidebar-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#blog-sidebar"><i class="ai-sidebar fs-base me-2"></i><%= t("views.label.sidebar") %></button>
   </body>
 </html>
+
+
+<script type="text/javascript">
+$("#rating-form").raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    scoreName: "rating"
+})
+
+if($(".review-rating img").length == 0) {
+    $(".review-rating").raty({
+        readOnly: true,
+        score: function() {
+            return $(this).attr("data-score");
+        },
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>'
+    })
+}
+</script>

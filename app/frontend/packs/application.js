@@ -107,21 +107,6 @@ $(document).on('turbolinks:load', function() {
             $(".js-settings").toggleClass("open");
         })
 
-        $("#rating-form").raty({
-            path: "/assets/",
-            scoreName: "rating"
-        })
-
-        if($(".review-rating img").length == 0) {
-            $(".review-rating").raty({
-                readOnly: true,
-                score: function() {
-                    return $(this).attr("data-score");
-                },
-                path: "/assets/"
-            })
-        }
-
         $(".loadMoreBtn").on("click", function() {
             const page = $("#current_page").val();
             var url = new URL(window.location.href);
