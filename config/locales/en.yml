@@ -4,11 +4,11 @@ en:
       recommend_project:
         logo: Project Logo
         name: Project Name*
-        website: Project Website*
-        reason: Recommend reason*
+        website: Project Website
+        reason: Recommend reason
         tag_list: Tags
-        desc: Project Description*
-        cost: Cost*
+        desc: Project Description
+        cost: Cost
         is_recommend: Recommend?*
     errors:
       messages:

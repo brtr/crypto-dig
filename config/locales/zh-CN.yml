@@ -4,11 +4,11 @@ zh-CN:
       recommend_project:
         logo: 项目头图
         name: 项目名称*
-        website: 项目地址*
-        reason: 推荐理由*
+        website: 项目地址
+        reason: 推荐理由
         tag_list: 标签
-        desc: 项目描述*
-        cost: 项目成本*
+        desc: 项目描述
+        cost: 项目成本
         is_recommend: 是否推荐*
     errors:
       messages:
